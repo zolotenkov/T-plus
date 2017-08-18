@@ -1,0 +1,404 @@
+* {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+body {
+  background: #7d7d7d;
+}
+
+.EndGame,
+.Pause,
+.MainMenu {
+  width: 60vw;
+  height: 70vh;
+  margin: 15vh auto;
+  border-radius: 5px;
+  box-sizing: border-box;
+  text-align: center;
+  background: white;
+}
+
+.Pause {
+  margin-top: 17vh;
+}
+
+.EndGame h1,
+.Pause h1,
+.MainMenu h1 {
+  padding-top: 2vh;
+  font-size: 7vh;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #717b83;
+}
+
+.EndGame h1 {
+  font-size: 6vh;
+}
+
+.Pause--navbar {
+  display: flex;
+  height: 33vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.EndGame--button,
+.Pause--button,
+.MainMenu--navbar--button,
+.Rules--tip--button,
+.GameScene--tip-button {
+  display: inline-block;
+  width: 28vw;
+  padding: 1vh 0 1vh;
+  background: #f15922;
+  border: none ;
+  border-radius: 5px;
+  font-size: 5vh;
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+  font-weight: bolder;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.Grid-left,
+.Grid-right {
+  display: inline-block;
+  height: 100%;
+}
+
+.Grid-left {
+  width: 85vw;
+}
+
+.Grid-right {
+  width: 15vw;
+}
+
+.Header {
+  height: 15vh;
+  background: #fff;
+  border-bottom: 1px solid #c4c4c4;
+}
+
+.Header--logo {
+  display: inline-block;
+  height: 12vh;
+  padding: 0vh 1vw 3vh 5vw;
+}
+
+.Header--InfoItem {
+  display: inline-block;
+  height: 15vh;
+  text-align: center;
+  padding: 0 5vw 0 5vw;
+}
+
+.Header--InfoItem h2{
+  font-size: 5vh;
+  line-height: 7vh;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bolder;
+  color: #717b83;
+}
+
+.Header--InfoItem span {
+  padding-top: 1vh;
+  font-size: 8vh;
+  line-height: 7vh;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bolder;
+  color: #f15922;
+}
+
+.Body {
+  height: 85vh;
+}
+
+.SearchList {
+  position: relative;
+  overflow-y: auto;
+  text-align: center;
+  background: #fff;
+}
+
+.SearchList .img {
+  position: relative;
+  display: block;
+  width: 50%;
+  margin: 2vh auto 2vh;
+}
+
+.SearchList .img.gray::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(33, 33, 33, 0.3);
+}
+
+
+.SearchList .img.black {
+  overflow: unset;
+}
+
+.SearchList .img.black::after {
+  content: '';
+  position: absolute;
+  top: -2vh;
+  left: -50%;
+  width: 200%;
+  height: calc(100% + 2vh);
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.GameScene {
+  position: relative;
+  overflow: auto;
+  text-align: center;
+}
+
+.GameScene--plus-scale,
+.GameScene--minus-scale {
+  position: fixed;
+  left: 72vw;
+  width: 10vh;
+  height: 10vh;
+  border-radius: 5vh;
+  background: #fff;
+  border: none;
+  font-size: 10vh;
+  text-align: center;
+  cursor: pointer;
+}
+
+.GameScene--tip-button {
+  position: fixed;
+  top: 18vh;
+  left: 68vw;
+  width: 15vw;
+  font-size: 3vh;
+}
+
+.GameScene--tip-button.closed {
+  left: 83vw;
+}
+
+.GameScene--plus-scale {
+  top: 74vh;
+  line-height: 10vh;
+}
+
+.GameScene--plus-scale::after {
+  display: block;
+  width: 10vh;
+  height: 10vh;
+  content: '';
+  background: url('../img/plus.png');
+  background-size: 100% 100%;
+}
+
+.GameScene--minus-scale {
+  top: 86vh;
+  line-height: 8vh;
+}
+
+.GameScene--minus-scale::after {
+  display: block;
+  width: 10vh;
+  height: 10vh;
+  content: '';
+  background: url('../img/minus.png');
+  background-size: 100% 100%;
+}
+
+
+.BurgerButton {
+  width: 7vw;
+  height: 12vh;
+  margin: 2vh auto;
+  cursor: pointer;
+}
+
+.BurgerButton--line {
+  display: block;
+  width: 7vw;
+  height: 1.8vh;
+  margin: 1vh 0 1.5vh;
+  background: #f15922;
+}
+
+.Shadow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7)
+}
+
+
+.Rules--tip {
+  position: absolute;
+  top: 45vh;
+  left: 27vw;
+  width: 70vw;
+  padding: 2vh 3vw 2vh;
+  background: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bolder;
+  font-size: 4vh;
+  text-align: right;
+}
+
+.Rules--tip--button {
+  width: 25vw;
+  font-size: 5vh;
+}
+
+.Rules--tip h2 {
+  text-align: center;
+  color: #383838;
+}
+
+.Rules--tip p {
+  text-align: left;
+  margin-bottom: 0.5vh;
+  color: #3c3c3c;
+  font-size: 3vh;
+}
+
+.Rules--tip--button {
+  font-size: 4vh;
+}
+
+
+.Pause--navbar {
+  margin-top: 1em;
+  height: 43vh;
+}
+
+.EndGame--score {
+  font-size: 4vh;
+  color: #7d7d7d;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bolder;
+}
+
+.EndGame--score div {
+  font-size: 20vh;
+  padding: 0 10vw 0;
+  background: #fafafa;
+  color: #f15922;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bolder;
+  text-align: center;
+}
+.ya-share2__badge {
+  margin: 0 1vw 0 1vw;
+}
+
+.ya-share2__icon {
+  display: block;
+  width: 7vh !important;
+  height: 7vh !important;
+}
+
+.scene {
+  position: relative;
+}
+
+.Game {
+  background: #fafafa;
+}
+
+.MainMenu--navbar--button {
+  margin: 5vh 0 1vh;
+}
+
+.MainMenu--navbar--text {
+  padding: 2vh 5vw 2vh;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 2.5vh;
+  font-weight: bolder;
+  color: #717b83;
+}
+
+.MainMenu--navbar--logo {
+  display: block;
+  height: 18vh;
+  margin: 0 auto;
+}
+
+.Grid-left.closed {
+  width: 100vw;
+}
+
+.Grid-right.closed {
+  width: 0vw;
+}
+
+.GameScene--plus-scale.closed,
+.GameScene--minus-scale.closed {
+  left: 87vw;
+}
+
+.itmTitle {
+  color: #3c3c3c;
+  font-size: 2.4vh;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.itmAlert {
+  background-color: #f15922;
+  color: white;
+  padding: 7px;
+  max-width: 15vw;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.8vh;
+  border-radius: 5px;
+  text-align: center;
+  z-index: 100px;
+  position: absolute;
+ -moz-animation-name: fadeIn;
+ -webkit-animation-name: fadeIn;
+ -ms-animation-name: fadeIn;
+ animation-name: fadeIn;
+ -moz-animation-duration: 0.5s;
+ -webkit-animation-duration: 0.5s;
+ -ms-animation-duration: 0.5s;
+ animation-duration: 0.5s;
+ -moz-animation-timing-function: ease-in-out;
+ -webkit-animation-timing-function: ease-in-out;
+ -ms-animation-timing-function: ease-in-out;
+ animation-timing-function: ease-in-out;
+ -moz-animation-fill-mode: forwards;
+ -webkit-animation-fill-mode: forwards;
+ -ms-animation-fill-mode: forwards;
+ animation-fill-mode: forwards;  
+}
+
+.itmAlert.fadeOut {
+ -moz-animation-name: fadeOut;
+ -webkit-animation-name: fadeOut;
+ -ms-animation-name: fadeOut;
+ animation-name: fadeOut;
+}
+
+@-moz-keyframes fadeIn { 0% { opacity: 0; visibility: hidden; } 100% { opacity: 1; visibility: visible; }}
+@-webkit-keyframes fadeIn { 0% { opacity: 0; visibility: hidden; } 100% { opacity: 1; visibility: visible; }}
+@-ms-keyframes fadeIn { 0% { opacity: 0; visibility: hidden; } 100% { opacity: 1; visibility: visible; }}
+@-keyframes fadeIn { 0% { opacity: 0; visibility: hidden; } 100% { opacity: 1; visibility: visible; }}
+
+@-moz-keyframes fadeOut { 0% { opacity: 1; visibility: visible; }  100% { opacity: 0; visibility: hidden; }} 
+@-webkit-keyframes fadeOut { 0% { opacity: 1; visibility: visible; }  100% { opacity: 0; visibility: hidden; }} 
+@-ms-keyframes fadeOut { 0% { opacity: 1; visibility: visible; } 100% { opacity: 0; visibility: hidden; }} 
+@-keyframes fadeOut { 0% { opacity: 1; visibility: visible; } 100% { opacity: 0; visibility: hidden;  }} 
+
