@@ -75,6 +75,8 @@ var clsDescs = {
    'window': {'desc':'Утепляйте деревянные окна или замените их на пластиковые стеклопакеты, утечка теплого воздуха в холодное время года повышает расход электроэнергии в доме почти в 2 раза при включенных обогревателях. Сделав это вы сможете сэкономить до 6.000 рублей в год.'}
 }
 
+var descrs = {};
+
 export default class Game extends Component {
   constructor() {
     super();
@@ -113,27 +115,41 @@ export default class Game extends Component {
     this.addScore.call(this, el, x, y, 'stove');
     this.addScore.call(this, el, x, y, 'window');
 
-    if (this.state.cable &&
-        this.state['coffee-maker'] &&
-        this.state.extension_cable &&
-        this.state.hoover &&
-        this.state.hoover_2 &&
-        this.state.lamp_in_corridor &&
-        this.state.lamp_near_bad &&
-        this.state.lamp_near_mirror &&
-        this.state['pan-item'] &&
-        this.state.pc_back &&
-        this.state.pc_face &&
-        this.state.powerbank &&
-        this.state.stove &&
-        this.state.window
+    let that = this;
+
+    setTimeout(function(){
+       let state = that.state;
+
+       if (state.cable &&
+        state['coffee-maker'] &&
+        state.extension_cable &&
+        state.hoover &&
+        state.hoover_2 &&
+        state.lamp_in_corridor &&
+        state.lamp_near_bad &&
+        state.lamp_near_mirror &&
+        state['pan-item'] &&
+        state.pc_back &&
+        state.pc_face &&
+        state.powerbank &&
+        state.stove &&
+        state.window
       ) {
-      this.setState({
+      that.setState({
         stage: Stages.EndGame,
         timeIsOut: false,
       });
-      clearInterval(this.tickInterval);
+      for(var d in descrs){
+        if(descrs[d]) {
+           var ds = document.getElementById(d);
+           if(ds) ds.remove();
+        }
+      }
+      clearInterval(that.tickInterval);
     }
+    });
+
+    
   }
 
   addScore(child, x, y, className) {
@@ -157,7 +173,8 @@ export default class Game extends Component {
      document.documentElement.insertAdjacentHTML( 'beforeend', str );
      var div = document.getElementById(id);
      div.addEventListener("click", function(){ div.remove(); });
-     setTimeout(function(){ div.className = "itmAlert fadeOut"; setTimeout(function(){ div.remove(); },1000); }, 7000);
+     descrs[id]=true;
+     setTimeout(function(){ div.className = "itmAlert fadeOut"; setTimeout(function(){ div.remove(); descrs[id]=false; },1000); }, 7000);
   }
 
   findAncestor (el, cls) {

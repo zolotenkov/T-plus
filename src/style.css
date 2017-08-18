@@ -34,8 +34,12 @@ body {
   color: #717b83;
 }
 
+.EndGame {
+  z-index: 200;
+}
+
 .EndGame h1 {
-  font-size: 6vh;
+  font-size: 3.4vh;
 }
 
 .Pause--navbar {
@@ -292,8 +296,8 @@ body {
 }
 
 .EndGame--score div {
-  font-size: 20vh;
-  padding: 0 10vw 0;
+  font-size: 16vh;
+  padding: 0 8vw 0;
   background: #fafafa;
   color: #f15922;
   font-family: Arial, Helvetica, sans-serif;
@@ -365,7 +369,7 @@ body {
   font-size: 1.8vh;
   border-radius: 5px;
   text-align: center;
-  z-index: 100px;
+  z-index: 100;
   position: absolute;
  -moz-animation-name: fadeIn;
  -webkit-animation-name: fadeIn;
