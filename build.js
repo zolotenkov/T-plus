@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "f7b121129016e3596da7"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "0bcf3744735ea6765ffc"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -12159,7 +12159,11 @@ function hide(node) {
 }
 
 function hideStuff(className) {
-  document.querySelectorAll('.' + className).forEach(hide);
+  var allElements = document.querySelectorAll('.' + className);
+
+  for (var i = 0; i < allElements.length; i++) {
+    hide(allElements[i]);
+  }
 }
 
 function hideAllStuff(map) {
@@ -12221,6 +12225,7 @@ var Game = function (_Component) {
   }, {
     key: 'onSvgClick',
     value: function onSvgClick(el, x, y) {
+
       this.addScore.call(this, el, x, y, 'cable');
       this.addScore.call(this, el, x, y, 'coffee-maker');
       this.addScore.call(this, el, x, y, 'extension_cable');
