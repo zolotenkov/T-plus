@@ -49,7 +49,11 @@ function hide(node) {
 }
 
 function hideStuff(className) {
-  document.querySelectorAll(`.${className}`).forEach(hide);
+  let allElements = document.querySelectorAll(`.${className}`);
+
+  for(var i=0;i<allElements.length;i++) {
+     hide(allElements[i]);
+  }
 }
 
 function hideAllStuff(map) {
@@ -100,6 +104,7 @@ export default class Game extends Component {
   }
 
   onSvgClick(el,x,y) {
+
     this.addScore.call(this, el, x, y, 'cable');
     this.addScore.call(this, el, x, y, 'coffee-maker');
     this.addScore.call(this, el, x, y, 'extension_cable');
@@ -148,7 +153,6 @@ export default class Game extends Component {
       clearInterval(that.tickInterval);
     }
     });
-
     
   }
 
