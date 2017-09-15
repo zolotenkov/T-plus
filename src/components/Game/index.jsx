@@ -39,6 +39,8 @@ const defaultState = {
   powerbank: false,
   stove: false,
   window: false,
+  lamp_in_kids_rooom: false,
+  iron: false,
 };
 
 /**
@@ -72,7 +74,9 @@ var clsDescs = {
    'pc_face': {'desc':'Не выключенный компьютер потребляет до 35кВт в месяц. В течении года просто выключая питание не используемого компьютера вы можете сэкономить 1260 рублей.'},
    'powerbank': {'desc':'Включенный PowerBank а так-же зарядные устройства подключенные к сети но не заряжающие Ваши устройства расходуют электроэнергию до 10 кВт в месяц. Отключив их вы сможете сэкономить до 2.000 рублей в год.'},
    'stove': {'desc':'Электроплита потребляет до 150 кВт в месяц при использовании в течении 1 часа в день. Если вы начнете подбирать комфорки под размер посуды и не будете оставлять комфорку включенной после приготовления еды, то вы сэкономите до 6000 рублей в течении года.'},
-   'window': {'desc':'Утепляйте деревянные окна или замените их на пластиковые стеклопакеты, утечка теплого воздуха в холодное время года повышает расход электроэнергии в доме почти в 2 раза при включенных обогревателях. Сделав это вы сможете сэкономить до 6.000 рублей в год.'}
+   'window': {'desc':'Утепляйте деревянные окна или замените их на пластиковые стеклопакеты, утечка теплого воздуха в холодное время года повышает расход электроэнергии в доме почти в 2 раза при включенных обогревателях. Сделав это вы сможете сэкономить до 6.000 рублей в год.'},
+   'lamp_in_kids_rooom': {'desc': 'Как часто мы забываем выключить свет, выходя из комнаты? При этом даже простая лампа накаливания мощностью 60 Вт за год нерациональной работы может выставить Вам счет в 300-500 рублей. А сколько таких лампочек у Вас дома?'},
+   'iron': {'desc': 'Не выключенный утюг не только потребляет около 2,2 кВт каждый час (а это – уже 52 кВт в день!), но и является одной из главных причин пожаров! После глажки обязательно отключайте утюг от сети, в год он без пользы «сожжет» более 5000 рублей'}
 }
 
 export default class Game extends Component {
@@ -112,6 +116,9 @@ export default class Game extends Component {
     this.addScore.call(this, el, x, y, 'powerbank');
     this.addScore.call(this, el, x, y, 'stove');
     this.addScore.call(this, el, x, y, 'window');
+    this.addScore.call(this, el, x, y, 'lamp_in_kids_rooom');
+    this.addScore.call(this, el, x, y, 'iron');
+
 
     if (this.state.cable &&
         this.state['coffee-maker'] &&
@@ -126,7 +133,10 @@ export default class Game extends Component {
         this.state.pc_face &&
         this.state.powerbank &&
         this.state.stove &&
-        this.state.window
+        this.state.window &&
+        this.state.lamp_in_kids_rooom &&
+        this.state.iron
+
       ) {
       this.setState({
         stage: Stages.EndGame,
@@ -242,6 +252,9 @@ export default class Game extends Component {
       powerbank: this.state.powerbank,
       stove: this.state.stove,
       window: this.state.window,
+      lamp_in_kids_rooom: this.state.lamp_in_kids_rooom,
+      iron: this.state.iron,
+
     });
   }
 
@@ -294,10 +307,16 @@ export default class Game extends Component {
             this.state.stage === Stages.Rules ?
               <div className={`Grid-right SearchList black ${this.state.showRightPanel ? '' : 'closed'}`}>
                 <div className="img black">
-                  <img src="img/items/cable.svg" alt="Провод" /><p className="itmTitle">Провод</p>
-                </div>
-                <div className="img">
                   <img src="img/items/hoover.svg" alt="Робот-пылесос" /><p className="itmTitle">Робот-пылесос</p>
+                </div>
+                <div className="img black">
+                  <img src="img/items/lamp_in_kids_rooom.svg" alt="Настольная лампа" /><p className="itmTitle">Настольная лампа</p>
+                </div>
+                <div className="img black">
+                  <img src="img/items/iron.svg" alt="Утюг" /><p className="itmTitle">Утюг</p>
+                </div>
+                <div className="img black">
+                  <img src="img/items/cable.svg" alt="Провод" /><p className="itmTitle">Провод</p>
                 </div>
                 <div className="img black">
                   <img src="img/items/coffee-maker.svg" alt="Кофе-машина" /><p className="itmTitle">Кофе-машина</p>
@@ -338,6 +357,15 @@ export default class Game extends Component {
               </div>
             :
               <div className={`Grid-right SearchList ${this.state.showRightPanel ? '' : 'closed'}`}>
+                <div className={`img ${this.state.hoover ? 'gray' : ''}`}>
+                  <img src="img/items/hoover.svg" alt="Робот-пылесос" /><p className="itmTitle">Робот-пылесос</p>
+                </div>
+                <div className={`img ${this.state.cable ? 'gray' : ''}`}>
+                  <img src="img/items/lamp_in_kids_rooom.svg" alt="Настольная лампа" /><p className="itmTitle">Настольная лампа</p>
+                </div>
+                <div className={`img ${this.state.cable ? 'gray' : ''}`}>
+                  <img src="img/items/iron.svg" alt="Утюг" /><p className="itmTitle">Утюг</p>
+                </div>
                 <div className={`img ${this.state.cable ? 'gray' : ''}`}>
                   <img src="img/items/cable.svg" alt="Провод" /><p className="itmTitle">Провод</p>
                 </div>
@@ -347,9 +375,7 @@ export default class Game extends Component {
                 <div className={`img ${this.state.extension_cable ? 'gray' : ''}`}>
                   <img src="img/items/extension_cable.svg" alt="Удлинитель" /><p className="itmTitle">Удлинитель</p>
                 </div>
-                <div className={`img ${this.state.hoover ? 'gray' : ''}`}>
-                  <img src="img/items/hoover.svg" alt="Робот-пылесос" /><p className="itmTitle">Робот-пылесос</p>
-                </div>
+                
                 <div className={`img ${this.state.hoover_2 ? 'gray' : ''}`}>
                   <img src="img/items/hoover_2.svg" alt="Пылесос" /><p className="itmTitle">Пылесос</p>
                 </div>
